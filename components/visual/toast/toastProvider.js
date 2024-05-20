@@ -15,12 +15,15 @@ export const ToastProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
   const toastTimeouts = useRef({}); // Store timeouts here
   /**
-   * Adds a new toast notification.
-   * @param {string} content - The content of the toast.
-   * @param {Object} options - Configuration options for the toast.
-   * @param {number} [options.duration=4000] - The duration the toast should remain visible (default is 4000 milliseconds).
-   * @param {number} [options.transitionDuration=1000] - The duration of the toast's transition effect (default is 1000 milliseconds).
-   */
+ * Adds a new toast notification.
+ * @function 
+ * @name addToast
+ * @memberof ToastProvider
+ * @param {string} content - The content of the toast.
+ * @param {Object} options - Configuration options for the toast.
+ * @param {number} [options.duration=4000] - The duration the toast should remain visible (default is 4000 milliseconds).
+ * @param {number} [options.transitionDuration=1000] - The duration of the toast's transition effect (default is 1000 milliseconds).
+ */
   const addToast = (content, options = {}) => {
     const id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
     if (typeof options.transitionDuration === "undefined") {
