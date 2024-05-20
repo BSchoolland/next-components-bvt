@@ -1,6 +1,6 @@
 // toast/index.js
 
-import { ToastProvider } from "./toastProvider";
+import { ToastProvider, useToasts } from "./toastProvider";
 import Toast from "./toast";
 // export the Toast component
-export { ToastProvider, Toast };
+export { ToastProvider, useToasts, Toast };

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import { useToasts } from '@/components/visual/toast/toastProvider';
-import { Toast } from '@/components/visual/toast/index';
+import { useToasts } from '@/components/visual/toast';
+import { Toast } from '@/components/visual/toast';
 const Page = () => {
   const { addToast } = useToasts();
   return (
@@ -9,8 +9,8 @@ const Page = () => {
         <div>
             <h1>Hello, Next.js!</h1>
         </div>
-        <button onClick={() => addToast("Hello, Toast!")}>Add Toast</button>
-        <Toast />
+        <button onClick={() => addToast("Hello, Toast!", {duration: 3000})}>Add Toast</button>
+        <Toast/>
     </>
   );
 };

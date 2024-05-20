@@ -1,34 +1,33 @@
-
+/* toast.module.css */
 .toast {
     color: green;
 }
 
-.toast-wrapper {
+.toastWrapper {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
-  }
-  
-  .toast-enter {
+}
+
+.toastEnter {
     opacity: 0;
     transform: translateX(100%);
-  }
-  
-  .toast-enter-active {
+}
+
+.toastEnterActive {
     opacity: 1;
     transform: translateX(0);
     transition: opacity 3000ms, transform 3000ms;
-  }
-  
-  .toast-exit {
+}
+
+.toastExit {
     opacity: 1;
     transform: translateX(0);
-  }
-  
-  .toast-exit-active {
+}
+
+.toastExitActive {
     opacity: 0;
     transform: translateX(100%);
     transition: opacity 3000ms, transform 3000ms;
-  }
-  
+}
