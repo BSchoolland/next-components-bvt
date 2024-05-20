@@ -10,6 +10,12 @@
   text-align: center;
   margin-top: 10px;
   transition: transform 300ms ease-out;
+  display: flex;
+  flex-direction: row;
+}
+
+.toastIcon {
+  margin-right: 10px;
 }
 
 .toastWrapper {

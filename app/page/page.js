@@ -9,7 +9,7 @@ const Page = () => {
         <div>
             <h1>Hello, Next.js!</h1>
         </div>
-        <button onClick={() => addToast("Hello, Toast!", {duration: 3000})}>Add Toast</button>
+        <button onClick={() => addToast("Hello, Toast!", {type: "error", duration: 3000})}>Add Toast</button>
         <Toast/>
     </>
   );

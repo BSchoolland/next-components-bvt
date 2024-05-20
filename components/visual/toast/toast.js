@@ -2,7 +2,30 @@ import React, { createRef } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useToasts } from "./toastProvider";
 import styles from "./toast.module.css";  // Import as a module
+// fontawesome icons
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+// More icons could be added here
 
+const Icon = ({ type }) => {
+  if (type === "success") {
+    return (
+      <i className={styles.toastIcon}>
+        <FontAwesomeIcon icon={faCheckCircle} />
+      </i>
+    );
+  }
+  else if (type === "error") {
+    return (
+      <i className={styles.toastIcon} >
+        <FontAwesomeIcon icon={faExclamationCircle} />
+      </i>
+    );
+  }
+  else {
+    return (<></>);
+  }
+}
 /**
  * Toast component. Accepts all props a div would accept.
  */
@@ -33,7 +56,10 @@ const Toast = ({ ...rest }) => {
               }}
               {...rest}
             >
+              <Icon type={toast.type}/>
               {toast.content}
+              
+              
             </div>
           </CSSTransition>
         );
