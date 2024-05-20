@@ -8,7 +8,6 @@ import styles from "./toast.module.css";  // Import as a module
  */
 const Toast = ({ ...rest }) => {
   const { toasts, removeToast } = useToasts();
-
   return (
     <TransitionGroup className={styles.toastWrapper}>
       {toasts.map((toast) => {

@@ -33,8 +33,7 @@ export const ToastProvider = ({ children }) => {
       console.warn("Toast duration should not be negative. ");
     }
     const newToast = { id, content, ...options };
-
-    setToasts((toasts) => [...toasts, newToast]);
+    setToasts((toasts) => [newToast, ...toasts]); // Add new toast to the beginning of the array
 
     // Clear any existing timeout for this toast if it exists (safety net)
     if (toastTimeouts.current[id]) {
