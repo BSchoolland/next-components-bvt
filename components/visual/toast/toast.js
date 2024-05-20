@@ -3,6 +3,9 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useToasts } from "./toastProvider";
 import styles from "./toast.module.css";  // Import as a module
 
+/**
+ * Toast component. Accepts all props a div would accept.
+ */
 const Toast = ({ ...rest }) => {
   const { toasts, removeToast } = useToasts();
 
