@@ -23,8 +23,11 @@ export const ToastProvider = ({ children }) => {
    */
   const addToast = (content, options = {}) => {
     const id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-    if (!options.transitionDuration) {
+    if (typeof options.transitionDuration === "undefined") {
       options.transitionDuration = 1000; // default transition duration
+    } else if (options.transitionDuration < 0) {
+      // Ensure transition duration is not negative
+      console.warn("Toast transition duration should not be negative. ");
     }
     if (typeof options.duration === "undefined") {
       options.duration = 4000; // default duration

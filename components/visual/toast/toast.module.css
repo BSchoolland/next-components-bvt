@@ -12,6 +12,15 @@
   transition: transform 300ms ease-out;
   display: flex;
   flex-direction: row;
+  cursor: pointer;
+}
+
+.toast.success {
+  background-color: #4caf50;
+}
+
+.toast.error {
+  background-color: #f44336;
 }
 
 .toastIcon {

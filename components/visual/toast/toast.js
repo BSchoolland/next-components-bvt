@@ -7,15 +7,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 // More icons could be added here
 
-const Icon = ({ type }) => {
-  if (type === "success") {
+const Icon = ({ style }) => {
+  if (style === "success") {
     return (
       <i className={styles.toastIcon}>
         <FontAwesomeIcon icon={faCheckCircle} />
       </i>
     );
   }
-  else if (type === "error") {
+  else if (style === "error") {
     return (
       <i className={styles.toastIcon} >
         <FontAwesomeIcon icon={faExclamationCircle} />
@@ -49,14 +49,14 @@ const Toast = ({ ...rest }) => {
           >
             <div
               ref={nodeRef}
-              className={styles.toast}
+              className={styles.toast + " " + styles[toast.style]}
               onClick={() => removeToast(toast.id)}
               style={{
                 transition: `opacity ${toast.transitionDuration}ms, transform ${toast.transitionDuration}ms`
               }}
               {...rest}
             >
-              <Icon type={toast.type}/>
+              <Icon style={toast.style}/>
               {toast.content}
               
               
