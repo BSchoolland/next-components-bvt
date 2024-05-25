@@ -8,8 +8,8 @@ function Chatbot() {
     e.preventDefault();
     const message = e.target[0].value;
     if (!message.trim()) return; // Prevent sending empty messages
-    const updatedChatHistory = [...chatHistory, "User: " + message];
-    setChatHistory(updatedChatHistory); // Update the chat history optimistically
+    const updatedChatHistory = [...chatHistory, {"role": "user", "content": message} ];
+    setChatHistory(updatedChatHistory);
     e.target.reset();
 
     try {
@@ -18,7 +18,7 @@ function Chatbot() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ "chatHistory": updatedChatHistory, message }),
       });
     
       if (!response.ok) {
@@ -27,7 +27,7 @@ function Chatbot() {
       // const { answer } = await response.json();
       const jsonResponse = await response.json()
       const answer = jsonResponse.message
-      setChatHistory(prevHistory => [...prevHistory, "Chatbot: " + answer]);
+      setChatHistory(prevHistory => [...prevHistory, {"role": "assistant", "content": answer}]);
     } catch (error) {
       console.error("Failed to fetch:", error.message);
     }
@@ -37,7 +37,7 @@ function Chatbot() {
   return (
     <div>
       {chatHistory.map((message, index) => (
-        <div key={index}>{message}</div>
+        <div key={index}>{message.role}: {message.content}</div>
       ))}
 
       <form onSubmit={handleSubmit}>
