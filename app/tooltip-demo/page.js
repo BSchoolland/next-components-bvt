@@ -5,7 +5,8 @@ import ToolTip from '@/components/tooltip'
 
 const Page = () => {
   return (
-    <div style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "20px"}}>
+    <div>
+      <div style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "20px"}}>
         <h1>Tooltip Demo</h1>
         <ToolTip component={<p>Click the link to go back to the home page</p>}>
           <a href="/">Back to home</a>
@@ -24,6 +25,44 @@ const Page = () => {
         } interactive>
           <h3>Hover over me</h3>
         </ToolTip>
+      </div>
+      <div>
+        <ToolTip component={<p>The tooltip is smart and will adjust its position to stay on the screen</p>}>
+          <h2>Hover over me</h2>
+        </ToolTip>
+      </div>
+      <div style={{display: "flex", justifyContent: "flex-end"}}>
+        <ToolTip component={<p>Works on the right side too!</p>}>
+          <h2>Hover over me</h2>
+        </ToolTip>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <ToolTip component={<p>Works on the bottom too!</p>}>
+        <h2>Hover over me</h2>
+      </ToolTip>
     </div>
   );
 };

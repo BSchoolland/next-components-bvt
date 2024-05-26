@@ -25,13 +25,14 @@ const ToolTip = ({ component = <div><p>Pass a "component" prop to put your own c
             let { top, left, width, height } = tooltipElement.getBoundingClientRect();
             left += width / 2;
             top -= 15;
-        
+            
             const { width: componentWidth, height: componentHeight } = toolTipComponent.getBoundingClientRect();
             let addedArrowStyle = {};
-        
+            
             // Adjust horizontally
-            if (left + componentWidth > window.innerWidth) {
-                left -= componentWidth / 2;
+            if (left + componentWidth / 2 > window.innerWidth) {
+                left -= componentWidth;
+                toolTipRef.current.style.transform = "translateX(0%) translateY(-100%)";
                 addedArrowStyle.left = "90%";
             } else if (left - componentWidth / 2 < 0) {
                 left += componentWidth / 2;
@@ -40,9 +41,11 @@ const ToolTip = ({ component = <div><p>Pass a "component" prop to put your own c
             console.log(top, componentHeight, height);
             // Adjust vertically if too high
             if (top - componentHeight - 15 - 15 < 0) {
-                top = top + componentHeight + height * 2 + 30;
+                top = top + componentHeight + height * 2 + 15;
                 addedArrowStyle = { ...addedArrowStyle, top: "0%", transform: "translateX(-50%) translateY(-50%)rotate(45deg)" };
             }
+            // adjust top based on how much the user has scrolled
+            top += window.scrollY;
         
             return { left, top, addedArrowStyle };
         };
@@ -59,7 +62,7 @@ const ToolTip = ({ component = <div><p>Pass a "component" prop to put your own c
             const { left, top, addedArrowStyle } = calculatePosition(tooltipElement, toolTipComponent);
         
             // Update state
-            setArrowStyle(prevState => ({ ...prevState, ...addedArrowStyle }));
+            setArrowStyle({...style, ...addedArrowStyle });
             setPosition({ x: left, y: top });
             setIsVisible(true);
         };
@@ -93,13 +96,13 @@ const ToolTip = ({ component = <div><p>Pass a "component" prop to put your own c
             ref={interactive ? toolTipContainerRef : null}
             style={interactive ? { width: "fit-content", display: "inline-block" } : null}
         >
-            <div
+            <div ref={toolTipRef}
                 className={`${styles.tooltip} ${!isVisible && styles.hidden}`}
                 {...rest}
                 style={newStyle}
             >
                 <div className={styles.tooltipArrow} style={arrowStyle} />
-                <div className={styles.tooltipContent} ref={toolTipRef}>{component}</div>
+                <div>{component}</div>
             </div>
             {!interactive ? (
                 <div
