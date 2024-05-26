@@ -5,19 +5,25 @@ import ToolTip from '@/components/tooltip'
 
 const Page = () => {
   return (
-    <div className="demo"> 
+    <div className="demo" style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh"}}>
         <h1>Tooltip Demo</h1>
-        <ToolTip message="click to go back to home page">
+        <ToolTip component={<p>Click the link to go back to the home page</p>}>
           <a href="/">Back to home</a>
         </ToolTip>
         <br />
-        <ToolTip message="this is a tooltip">
+        <ToolTip component={<p>Tooltips accept custom styling</p>} style={{backgroundColor: "darkblue", color: "white", padding: "10px"}}>
           <button>Hover over me</button>
         </ToolTip>
         <br />
-        <ToolTip message="this is a tooltip">
+        <ToolTip component={
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+          <h2 style={{color: "green", fontSize: "20px"}}>Tooltips can contain any custom component</h2>
+          <p>They can also be applied to any element</p>
+          <button onClick={() => alert("Tooltips can even include interactive elements, if you set 'interactive' to true. Cool!")}>Click me</button>
+        </div>
+        } interactive>
           <h3>Hover over me</h3>
-          </ToolTip>
+        </ToolTip>
     </div>
   );
 };

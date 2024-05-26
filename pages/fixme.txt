@@ -1,0 +1,2 @@
+I don't know why /pages has to exist, but if it does not the server will crash.
+FIXME: Someone should look into why the empty /pages directory needs to exist, and whether it should be empty or not.
