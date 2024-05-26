@@ -5,7 +5,7 @@ import ToolTip from '@/components/tooltip'
 
 const Page = () => {
   return (
-    <div >
+    <div style={{display: "flex", flexDirection: "column", alignItems: "center", padding: "20px"}}>
         <h1>Tooltip Demo</h1>
         <ToolTip component={<p>Click the link to go back to the home page</p>}>
           <a href="/">Back to home</a>

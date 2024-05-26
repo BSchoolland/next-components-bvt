@@ -37,11 +37,11 @@ const ToolTip = ({ component = <div><p>Pass a "component" prop to put your own c
                 left += componentWidth / 2;
                 addedArrowStyle.left = "10%";
             }
-        
+            console.log(top, componentHeight, height);
             // Adjust vertically if too high
-            if (top - componentHeight * 2 < 0) {
+            if (top - componentHeight - 15 - 15 < 0) {
                 top = top + componentHeight + height * 2 + 30;
-                addedArrowStyle = { ...addedArrowStyle, top: "0%", transform: "rotate(45deg) translateX(-50%) translateY(0%)" };
+                addedArrowStyle = { ...addedArrowStyle, top: "0%", transform: "translateX(-50%) translateY(-50%)rotate(45deg)" };
             }
         
             return { left, top, addedArrowStyle };
@@ -84,7 +84,7 @@ const ToolTip = ({ component = <div><p>Pass a "component" prop to put your own c
             tooltipElement.removeEventListener("mouseenter", handleMouseEnter);
             tooltipElement.removeEventListener("mouseleave", handleMouseLeave);
         };
-    }, [interactive]);
+    }, [interactive, style]);
 
     const newStyle = { ...style, top: position.y, left: position.x };
 

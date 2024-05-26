@@ -12,7 +12,7 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: rotate(45deg) translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg) ;
     padding: 10px;
     background-color: lightblue;
     z-index: -1;
