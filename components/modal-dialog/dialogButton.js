@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import DialogContext from './DialogContext';
 // this component allows for the creation of a button that will open a modal dialog when clicked
 
 /**
@@ -6,14 +8,19 @@
  * @param {Object} props.children - The children of the button.
  * @param {Object} props.dialog - The dialog component to open.
  */
-function DialogButton({ children, dialog, ...rest }) {
+function DialogButton({ children, ...rest }) {
+    const dialogContext = useContext(DialogContext);
+
     const onClick = () => {
-        dialog.open();
+        dialogContext.openDialog();
     }
+
     return (
-    <button onClick={onClick} {...rest}>
-        {children}
-    </button>
+        <>
+            <button onClick={onClick} {...rest}>
+                {children}
+            </button>
+        </>
     );
 }
 
